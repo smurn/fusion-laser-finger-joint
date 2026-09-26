@@ -10,5 +10,5 @@
 	"runOnStartup":	false,
 	"supportedOS":	"windows|mac",
 	"editEnabled":	true,
-	"iconFilename":	"laserfinger.svg"
+	"iconFilename":	"laserfingerjoint.svg"
 }

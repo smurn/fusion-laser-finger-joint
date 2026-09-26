@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 
-class LaserFingerFeature(sane.CustomFeature):
+class LaserFingerJointFeature(sane.CustomFeature):
     def __init__(self):
         defaultLengthUnits = "mm" # app.activeProduct.unitsManager.defaultLengthUnits
         parameters = [
@@ -30,8 +30,9 @@ class LaserFingerFeature(sane.CustomFeature):
         ]
 
         super().__init__(
+            # Never change the id: saved designs refer to their features by it.
             id='laser-finger-feature', 
-            name='Laser Finger', 
+            name='Laser Finger Joint', 
             tooltip='Finger Joints for Laser Cutting', 
             icon_path="resources",
             boolean_operation=adsk.fusion.FeatureOperations.CutFeatureOperation,
@@ -217,7 +218,7 @@ class LaserFingerFeature(sane.CustomFeature):
         begin_with_finger = params['begin_with_finger']
         end_width_finger = params['end_with_finger']
 
-        _, long_edge, _ = LaserFingerFeature.extract_face_geometry(face)
+        _, long_edge, _ = LaserFingerJointFeature.extract_face_geometry(face)
         edge_length = long_edge.length
 
         available_length = edge_length - offset_begin - offset_end

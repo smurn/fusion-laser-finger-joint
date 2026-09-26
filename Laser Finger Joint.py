@@ -4,7 +4,7 @@
 import adsk.core
 import logging
 from . import sane
-from . import laser_finger_feature
+from . import laser_finger_joint_feature
 
 logger = logging.getLogger(__name__)
 sane.configure_logger(logger)
@@ -12,10 +12,10 @@ app = adsk.core.Application.get()
 
 def run(context):
     with sane.report_all_exceptions():
-        logger.info("-- Laser Joint Add-In Starting --")
+        logger.info("-- Laser Finger Joint Add-In Starting --")
 
         global _feature
-        _feature = laser_finger_feature.LaserFingerFeature()
+        _feature = laser_finger_joint_feature.LaserFingerJointFeature()
 
 
 def stop(context):

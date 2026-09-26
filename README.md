@@ -1,6 +1,6 @@
-# Laser Joint
+# Laser Finger Joint
 
-A Fusion add-in for designing laser-cut parts with finger joints. It adds a **Laser Finger** command to *Solid → Modify*: select the edge face of a flat part and it cuts a finger pattern into it, as a parametric feature that stays in the timeline and can be edited later.
+A Fusion add-in for designing laser-cut parts with finger joints. It adds a **Laser Finger Joint** command to *Solid → Modify*: select the edge face of a flat part and it cuts a finger pattern into it, as a parametric feature that stays in the timeline and can be edited later.
 
 ## Features
 
@@ -13,17 +13,17 @@ A Fusion add-in for designing laser-cut parts with finger joints. It adds a **La
 
 ## Installation
 
-The add-in folder must be named `Laser Joint`, to match `Laser Joint.py` and `Laser Joint.manifest`.
+The add-in folder must be named `Laser Finger Joint`, to match `Laser Finger Joint.py` and `Laser Finger Joint.manifest`.
 
 1. Clone the repository into Fusion's add-in folder:
    - Windows: `%APPDATA%\Autodesk\Autodesk Fusion 360\API\AddIns`
    - macOS: `~/Library/Application Support/Autodesk/Autodesk Fusion 360/API/AddIns`
 
    ```
-   git clone https://github.com/smurn/fusion-laser-joint.git "Laser Joint"
+   git clone https://github.com/smurn/fusion-laser-finger-joint.git "Laser Finger Joint"
    ```
 
-2. In Fusion, open *Scripts and Add-Ins* (Shift+S), select **Laser Joint** under *Add-Ins* and click **Run**.
+2. In Fusion, open *Scripts and Add-Ins* (Shift+S), select **Laser Finger Joint** under *Add-Ins* and click **Run**.
 
 ## Usage
 
@@ -42,8 +42,8 @@ Fingers and gaps have the same width. If no finger count satisfies the settings 
 
 ## Code structure
 
-- `Laser Joint.py`: add-in entry point.
-- `laser_finger_feature.py`: the Laser Finger feature: parameters, face validation and the geometry of the cutouts.
+- `Laser Finger Joint.py`: add-in entry point.
+- `laser_finger_joint_feature.py`: the Laser Finger Joint feature: parameters, face validation and the geometry of the cutouts.
 - `sane/`: a small framework on top of Fusion's custom feature API. A feature declares its parameters and implements validation and tool-body generation. The framework handles the dialog, creating/editing/recomputing the feature, multi-selection (one feature per selected entity), remembering settings and error reporting.
 
 Requires the Python bundled with current Fusion versions (3.12 or newer).
