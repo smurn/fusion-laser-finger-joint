@@ -1,0 +1,14 @@
+{
+	"autodeskProduct":	"Fusion",
+	"type":	"addin",
+	"id": "8ddf023b-89bd-4313-84ea-1d94c4dba3bd",
+	"author":	"Stefan C. Mueller",
+	"description":	{
+		"":	""
+	},
+	"version":	"",
+	"runOnStartup":	false,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true,
+	"iconFilename":	"laserfinger.svg"
+}

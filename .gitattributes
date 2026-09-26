@@ -1,0 +1,3 @@
+# Store text files with LF in the repository; Git for Windows checks them out with CRLF.
+* text=auto
+*.png binary
