@@ -44,6 +44,8 @@ Select one or more faces and set the parameters:
 
 Fingers and gaps have the same width. If no finger count satisfies the settings (e.g. the offsets are longer than the edge), the face is rejected.
 
+To make the mating part, model both parts overlapping at the corner, apply the joint to one of them (finger depth = thickness of the other part), then use *Combine → Cut* with the other part as target and the jointed part as tool, with *Keep Tools* checked.
+
 ## Code structure
 
 - `Laser Finger Joint.py`: add-in entry point.

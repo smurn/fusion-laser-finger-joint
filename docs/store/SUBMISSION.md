@@ -59,6 +59,7 @@ Autodesk builds the installer from the bundle. `PackageContents.xml` uses a fixe
 > Features:
 > - Parametric: joints recompute when upstream geometry changes and can be edited later.
 > - Select several edges at once; one joint is created per edge and grouped in the timeline.
+> - Make the mating part with a standard Combine → Cut using the jointed part as the tool, so both parts always match exactly.
 > - The number of fingers is chosen automatically to match your preferred finger width, within the limits you set.
 > - Choose whether each end starts with a finger or a cutout, and leave an uncut margin at either end.
 > - Use expressions and user parameters, e.g. a `ply` parameter for your material thickness, so changing the material updates every joint.

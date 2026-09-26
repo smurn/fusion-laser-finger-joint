@@ -57,8 +57,13 @@
 
   <h2>Tips</h2>
   <h3>Making the mating part</h3>
-  <p>For two parts that slot together along edges of the same length, apply the joint to both edges with the same settings, but flip <em>Begin with finger</em> and <em>End with finger</em> on one of them. The fingers of one part then line up with the cutouts of the other.</p>
-  <p>This only works if both joints end up with the same number of segments. That's the case unless the finger count hits its min. or max. limit, e.g. on a long edge with the default maximum of 10 fingers. If the two patterns don't line up, raise <em>Max. finger count</em> (or lower <em>Min. finger count</em>) on both joints.</p>
+  <p>Cut the fingers into one part, then use that part to cut the matching fingers out of the other one:</p>
+  <ol>
+    <li>Model the two parts so that they overlap where they meet, i.e. both extend all the way through the corner.</li>
+    <li>Apply <strong>Laser Finger Joint</strong> to the edge face of the first part, with the finger depth set to the thickness of the second part.</li>
+    <li>Use <em>Modify → Combine</em> with the second part as the <em>target body</em>, the first part as the <em>tool body</em>, operation <strong>Cut</strong>, and <strong>Keep Tools</strong> checked.</li>
+  </ol>
+  <p>The second part now has the exact counterpart of the first part's fingers. Both stay parametric: if you change the joint, the combine updates too.</p>
   <h3>Laser kerf</h3>
   <p>The joint is cut to the exact nominal dimensions; the laser's kerf is not compensated. Depending on your material and cutter you may want a slightly smaller depth or to compensate in your laser software.</p>
 
