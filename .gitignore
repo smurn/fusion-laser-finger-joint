@@ -7,3 +7,6 @@ __pycache__/
 
 # Debug output
 sane/all panels.txt
+
+# Build output
+dist/

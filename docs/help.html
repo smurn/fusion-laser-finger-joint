@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laser Finger Joint — Help</title>
+<style>
+  :root { --text: #1f2328; --muted: #57606a; --line: #d0d7de; --accent: #0b6bcb; --code: #f3f4f6; --bg: #ffffff; }
+  @media (prefers-color-scheme: dark) {
+    :root { --text: #e6edf3; --muted: #9da7b3; --line: #30363d; --accent: #4ea1ff; --code: #1c2128; --bg: #0d1117; }
+  }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 2rem; margin: 0 0 4px; }
+  h2 { font-size: 1.3rem; margin: 2.2em 0 .6em; padding-bottom: .3em; border-bottom: 1px solid var(--line); }
+  h3 { font-size: 1.05rem; margin: 1.6em 0 .4em; }
+  p.lead { color: var(--muted); margin-top: 0; font-size: 1.1rem; }
+  a { color: var(--accent); }
+  code { background: var(--code); padding: .1em .35em; border-radius: 4px; font-size: .92em; }
+  table { width: 100%; border-collapse: collapse; margin: .8em 0; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  th { font-weight: 600; white-space: nowrap; }
+  ol li, ul li { margin: .3em 0; }
+  .note { border-left: 3px solid var(--accent); padding: .4em 0 .4em 12px; color: var(--muted); }
+  footer { margin-top: 48px; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Laser Finger Joint</h1>
+  <p class="lead">Parametric finger joints for laser-cut parts in Autodesk Fusion.</p>
+
+  <p>Laser Finger Joint cuts a finger pattern into the edge of a flat part. The joint is a feature in the timeline: it updates when the part changes and can be edited at any time, like Fusion's built-in features.</p>
+
+  <h2>Getting started</h2>
+  <ol>
+    <li>After installing, the <strong>Laser Finger Joint</strong> command appears in the <strong>Design</strong> workspace, on the <strong>Solid</strong> tab under <strong>Modify</strong>. If it doesn't, open <em>Utilities → Add-Ins → Scripts and Add-Ins</em> (Shift+S), select <strong>Laser Finger Joint</strong> on the <em>Add-Ins</em> tab and click <strong>Run</strong>.</li>
+    <li>Model your part as a flat body, e.g. an extruded sketch with the thickness of your material.</li>
+    <li>Start <strong>Laser Finger Joint</strong> and click the <em>edge face</em> of the part where the fingers should go: the narrow rectangular face whose width is the material thickness.</li>
+    <li>Adjust the settings (see below). The preview shows the result.</li>
+    <li>Click <strong>OK</strong>.</li>
+  </ol>
+  <p>You can select several faces at once. One joint is created per face, in the order you selected them, and grouped together in the timeline.</p>
+
+  <h2>Settings</h2>
+  <table>
+    <tr><th>Faces</th><td>Faces to cut the fingers into. Each face must be flat and rectangular: four straight, perpendicular edges and no holes. The pattern runs along the face's longest edge.</td></tr>
+    <tr><th>Finger depth</th><td>How deep the cutouts go. Usually the thickness of the part that will slot into this one.</td></tr>
+    <tr><th>Preferred width</th><td>The finger width to aim for. The actual width is chosen so fingers and gaps fill the edge evenly.</td></tr>
+    <tr><th>Min. / Max. finger count</th><td>Limits on the number of fingers.</td></tr>
+    <tr><th>Begin with finger</th><td>If checked, the pattern starts with a finger (material left standing). Otherwise it starts with a cutout.</td></tr>
+    <tr><th>End with finger</th><td>The same for the other end of the edge.</td></tr>
+    <tr><th>Offset at the beginning / end</th><td>Length at each end of the edge that is left uncut.</td></tr>
+  </table>
+  <p>Lengths accept expressions and user parameters, for example <code>ply</code> or <code>ply * 2</code>. Define a user parameter for your material thickness (<em>Modify → Change Parameters</em>) and use it for the depth: changing the parameter later updates every joint that uses it.</p>
+  <p class="note">The dialog remembers the settings you last confirmed with OK until Fusion is closed.</p>
+
+  <h2>Tips</h2>
+  <h3>Making the mating part</h3>
+  <p>For two parts that slot together along edges of the same length, apply the joint to both edges with the same settings, but flip <em>Begin with finger</em> and <em>End with finger</em> on one of them. The fingers of one part then line up with the cutouts of the other.</p>
+  <p>This only works if both joints end up with the same number of segments. That's the case unless the finger count hits its min. or max. limit, e.g. on a long edge with the default maximum of 10 fingers. If the two patterns don't line up, raise <em>Max. finger count</em> (or lower <em>Min. finger count</em>) on both joints.</p>
+  <h3>Laser kerf</h3>
+  <p>The joint is cut to the exact nominal dimensions; the laser's kerf is not compensated. Depending on your material and cutter you may want a slightly smaller depth or to compensate in your laser software.</p>
+
+  <h2>Troubleshooting</h2>
+  <h3>A face can't be selected</h3>
+  <p>The face is not suitable: it is not flat, not a rectangle, has a hole, or no finger count fits the settings (e.g. the offsets are longer than the edge, or the finger limits can't be met). Check the face and the settings.</p>
+  <h3>A joint is red in the timeline</h3>
+  <p>A change earlier in the timeline broke the joint, for example the face it was applied to no longer exists or is no longer rectangular. The previous cut is kept until you fix it. Right-click the joint, choose <strong>Edit Feature</strong>, select a new face if needed, and click OK. The reason is written to Fusion's <em>Text Commands</em> window.</p>
+  <h3>Some faces were skipped</h3>
+  <p>When several faces of the same body are selected, a joint can change a face selected after it (e.g. two edges meeting at a corner). If a face no longer qualifies, it is skipped and you are told which ones. Try a different selection order, or apply the joint to those faces separately.</p>
+
+  <h2>Privacy</h2>
+  <p>Laser Finger Joint does not collect, store or transmit any data and makes no network connections. See the <a href="https://github.com/smurn/fusion-laser-finger-joint/blob/main/PRIVACY.md">privacy policy</a>.</p>
+
+  <h2>Support and source code</h2>
+  <p>Laser Finger Joint is open source under the MIT license. Report problems or suggest improvements at <a href="https://github.com/smurn/fusion-laser-finger-joint/issues">github.com/smurn/fusion-laser-finger-joint/issues</a>.</p>
+
+  <footer>Laser Finger Joint · © 2025 Stefan C. Mueller · MIT License</footer>
+</main>
+</body>
+</html>

@@ -4,10 +4,10 @@
 	"id": "8ddf023b-89bd-4313-84ea-1d94c4dba3bd",
 	"author":	"Stefan C. Mueller",
 	"description":	{
-		"":	""
+		"":	"Parametric finger joints for laser-cut parts. Select the edge faces of flat parts and cut a finger pattern that stays editable in the timeline."
 	},
-	"version":	"",
-	"runOnStartup":	false,
+	"version":	"1.0.0",
+	"runOnStartup":	true,
 	"supportedOS":	"windows|mac",
 	"editEnabled":	true,
 	"iconFilename":	"laserfingerjoint.svg"
